@@ -7,4 +7,4 @@ const { body, validationResult } = require('express-validator');
 const { DateTime } = require('luxon');
 
 // app controller functions
-// communicating with front end
+// remember to follow REST principles
