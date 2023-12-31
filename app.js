@@ -5,6 +5,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
 
 // DEPENDENCIES TO INSTALL (to my knowledge)
 // passport
@@ -17,11 +18,26 @@ var logger = require('morgan');
 // helmet
 // memorystore
 
-const session = require('express-session');
-
 var indexRouter = require('./routes/index');
 
 var app = express();
+
+// setting up mongoose and database connection
+const mongoose = require('mongoose');
+mongoose.set('strictQuery', false);
+
+const mongodb = process.env.MONGODB_URI;
+if (!mongodb) {
+  console.error('Error: MONGOGB_URI is not defined');
+} else {
+  console.log('MONGODB_URI has been successfully captured.')
+}
+
+// connect to database
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongodb);
+};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
