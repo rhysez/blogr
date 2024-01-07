@@ -8,6 +8,8 @@ var logger = require('morgan');
 const session = require('express-session');
 const cors = require('cors');
 
+// start server using 'nodemon' command
+
 // DEPENDENCIES TO INSTALL (to my knowledge)
 // passport
 // passport-local
