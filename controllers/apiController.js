@@ -43,11 +43,9 @@ exports.log_in_post = asyncHandler(async (req, res, next) => {
     return res.json('NOT IMPLEMENTED: log_in_post')
 })
 
-// posts/post controllers
+// post controllers
 exports.posts_get = asyncHandler(async (req, res, next) => {
-  // returns test data in json
-  const testPost = await Post.findOne().exec();
-  return res.json(testPost);
+    return res.json('NOT IMPLEMENTED: posts_get')
 })
 
 exports.post_get = asyncHandler(async (req, res, next) => {

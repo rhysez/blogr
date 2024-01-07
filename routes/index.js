@@ -20,6 +20,6 @@ router.get('/', api_controller.home);
 
 router.get('/posts', api_controller.posts_get);
 
-router.get('/posts/:postId', api_controller.post_get)
+router.get('/posts/:postid', api_controller.post_get)
 
 module.exports = router;
