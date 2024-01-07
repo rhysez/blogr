@@ -1,22 +1,25 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // state array which contains list of posts
+  const [posts, setPosts] = useState([]);
+
+  // runs fetch on component mount only
+  useEffect(() => {
+    // cannot fetch path
+    fetch('/home')
+    .then(res => res.json())
+    .then(data => setPosts(data))
+    .catch(err => console.log(err))
+  }, [])
 
   return (
     <>
       <h1>blogr</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
+      <div>{posts.title}</div>
     </>
   )
 }
