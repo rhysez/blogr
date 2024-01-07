@@ -11,13 +11,14 @@ function App() {
 
   // runs fetch on component mount only
   useEffect(() => {
-    // cannot fetch path
+    // successfully fetches api
     fetch('http://localhost:3000/api')
     .then(res => res.json())
-    .then(data => setPosts([data]))
+    .then(data => setPosts([...posts, data[0]]))
     .then(function() {
       setIsLoading(false)
-      setApiResponse('Successfully connected')
+      setApiResponse('Successfully connected!')
+      console.log(posts)
     })
     .catch(err => console.log(err))
   }, [])
@@ -29,7 +30,9 @@ function App() {
   return (
     <>
       <h1>blogr</h1>
-      <div>{apiResponse}</div>
+      <h3>{apiResponse}</h3>
+      <div>{posts[0].title}</div>
+      <div>{posts[0].text}</div>
     </>
   )
 }
