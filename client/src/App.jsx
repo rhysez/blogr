@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
+import Trending from './components/Trending'
 
 // start client using 'npm run dev' command
 
@@ -11,11 +12,9 @@ function App() {
 
   // runs fetch on component mount only
   useEffect(() => {
-    // successfully fetches api
-    // remember to start server with nodemon
     fetch('http://localhost:3000/api')
     .then(res => res.json())
-    .then(data => setPosts([...posts, data[0]]))
+    .then(data => setPosts(data))
     .then(function() {
       setApiResponse(true)
       console.log(posts)
@@ -33,6 +32,7 @@ function App() {
       <section className='hero-background'>
         <Hero latestPost={posts[0].title} />
       </section>
+      <Trending posts={posts} />
     </>
   )
 }
