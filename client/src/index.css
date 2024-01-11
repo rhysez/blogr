@@ -6,8 +6,13 @@
   --palette-dark: #333333;
   --palette-light: #ffffff; 
   --palette-light-dim: #ececec; 
+  --palette-light-dimmer: #c7c7c7; 
   --palette-sage: #e1f4f3; 
   --palette-brown: #706c61;
+  --palette-browner: rgb(70, 64, 48);
+
+  --palette-orange: rgb(252, 221, 47);
+  --palette-red: rgb(194, 22, 22);
 }
 
 #root {
@@ -37,7 +42,7 @@ nav {
   padding-right: 0;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: var(--palette-sage);
+  background-color: var(--palette-orange);
 }
 
 .nav-title {
@@ -46,10 +51,10 @@ nav {
   margin-right: 2rem;
   padding: 1rem;
   font-size: 4.5rem;
-  color: var(--palette-light);
+  color: var(--palette-dark);
   box-shadow: 10px 5px 0px var(--palette-dark);
   border: 4px solid var(--palette-dark);
-  background-color: var(--palette-brown);
+  background-color: var(--palette-orange);
 }
 
 .nav-button {
@@ -60,7 +65,8 @@ nav {
   color: var(--palette-light);
   box-shadow: 10px 5px 0px var(--palette-dark);
   border: 4px solid var(--palette-dark);
-  background-color: var(--palette-brown);
+  background-color: var(--palette-red);
+  text-decoration: none;
   cursor: pointer;
   transition: all ease-in-out 0.2s;
 }
@@ -73,7 +79,7 @@ nav {
 /* hero */
 
 .hero-background {
-  background-color: var(--palette-sage);
+  background-color: var(--palette-orange);
 }
 
 .hero {
@@ -90,7 +96,7 @@ nav {
 }
 
 .hero-latest-post {
-  background-color: var(--palette-brown);
+  background-color: var(--palette-red);
   color: var(--palette-light);
   padding: 1rem;
   box-shadow: 5px 5px 0px var(--palette-dark);
@@ -127,15 +133,16 @@ nav {
 /* trending */
 
 .trending-container {
-  background-color: var(--palette-dark);
+  background-color: var(--palette-browner);
   padding: 2rem;
   padding-top: 5rem;
   padding-bottom: 10rem;
+  min-height: 75vh;
 }
 
 .trending-title {
   margin: 0;
-  color: var(--palette-sage);
+  color: var(--palette-light);
   padding: 2rem;
   font-size: 3rem;
 }
@@ -160,10 +167,13 @@ nav {
 }
 
 .trending-post {
-  background-color: var(--palette-light-dim);
   padding: 1rem;
-  border-radius: 5px;
   font-size: 1.75rem;
   max-width: 75rem;
   text-align: left;
+
+  color: var(--palette-dark);
+  box-shadow: 10px 10px 0px var(--palette-light-dimmer);
+  border: 4px solid var(--palette-dark);
+  background-color: var(--palette-light-dim);
 }

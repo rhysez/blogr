@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 
 function Trending(props) {
     const posts = props.posts
@@ -6,14 +6,22 @@ function Trending(props) {
 
     function nextPost() {
         let currentIndex = posts.indexOf(trendingPost)
+
         if (!posts[currentIndex + 1]) {
             return false;
         }
+
+        if (posts.indexOf(trendingPost) === -1) {
+            setTrendingPost(posts[1]);
+            return; 
+        }
+
         setTrendingPost(posts[currentIndex + 1])
     }
 
     function previousPost() {
         let currentIndex = posts.indexOf(trendingPost)
+
         if (currentIndex == 0) {
             return false;
         }

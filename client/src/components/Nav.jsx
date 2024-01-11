@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom"
+
 function Nav(props) {
     
     return (
         <>
             <nav>
                 <h3 className='nav-title'>blogr.</h3>
-                <p className='nav-button'>All posts</p>
+                <Link to='/posts' className='nav-button'>All posts</Link>
             </nav>
         </>
     )
