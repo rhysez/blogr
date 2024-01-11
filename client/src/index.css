@@ -27,7 +27,7 @@ html {
 body, html {
   margin: 0;
   padding: 0;
-  background-color: var(--palette-brown);
+  background-color: var(--palette-browner);
 }
 
 /* nav */ 
@@ -185,6 +185,13 @@ nav {
   box-shadow: 10px 10px 0px var(--palette-light-dimmer);
   border: 4px solid var(--palette-dark);
   background-color: var(--palette-light-dim);
+
+  transition: all ease-in-out 0.2s;
+  cursor: pointer;
+}
+
+.trending-post:hover {
+  background-color: var(--palette-light-dimmer);
 }
 
 @media(max-width: 800px) {
