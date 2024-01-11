@@ -26,7 +26,7 @@ const Router = () => {
         },
         {
             path: '/posts',
-            element: <AllPosts />,
+            element: <AllPosts posts={posts}/>,
             errorElement: <Error />
         }
     ]);
