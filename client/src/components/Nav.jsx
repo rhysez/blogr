@@ -6,7 +6,7 @@ function Nav(props) {
         <>
             <nav>
                 <h3 className='nav-title'>blogr.</h3>
-                <div>
+                <div className='nav-buttons'>
                     <Link to='/posts' className='nav-button'>All posts</Link>
                     <Link to='/' className='nav-button'>Home</Link>
                 </div>

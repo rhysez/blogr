@@ -76,6 +76,14 @@ nav {
   color: var(--palette-dark);
 }
 
+@media (max-width: 600px) {
+  .nav-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
 /* hero */
 
 .hero-background {
@@ -144,7 +152,7 @@ nav {
   margin: 0;
   color: var(--palette-light);
   padding: 2rem;
-  font-size: 3rem;
+  font-size: 3.25rem;
 }
 
 .trending-post-container {
@@ -176,4 +184,13 @@ nav {
   box-shadow: 10px 10px 0px var(--palette-light-dimmer);
   border: 4px solid var(--palette-dark);
   background-color: var(--palette-light-dim);
+}
+
+@media(max-width: 800px) {
+  .trending-post {
+    order: 3
+  }
+  .trending-post-container {
+    flex-direction: column-reverse;
+  }
 }
