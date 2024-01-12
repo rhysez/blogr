@@ -212,4 +212,26 @@ nav {
   flex-direction: column;
   align-items: center;
   gap: 8rem;
+  padding: 1rem;
+}
+
+.like-dislike {
+  display: flex;
+  gap: 1.5rem;
+  transition: all ease-in-out 0.2s;
+  cursor: pointer;
+}
+
+.like:hover {
+  filter: invert(43%) sepia(95%) saturate(3242%) hue-rotate(94deg) brightness(96%) contrast(96%);
+}
+
+.dislike:hover {
+  filter: invert(26%) sepia(71%) saturate(4394%) hue-rotate(11deg) brightness(102%) contrast(101%);
+}
+
+.likes, .dislikes {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }

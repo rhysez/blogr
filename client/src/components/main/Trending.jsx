@@ -1,4 +1,5 @@
-import {useState} from 'react'
+import { useState } from 'react'
+import Post from './Post'
 
 function Trending(props) {
     const posts = props.posts
@@ -34,7 +35,7 @@ function Trending(props) {
             <h3 className='trending-post-title'>{trendingPost.title}</h3>
             <article className='trending-post-container'>
                 <p className='switch-post' onClick={previousPost}>Back</p>
-                <article className='trending-post'>{trendingPost.text}</article>
+                <Post text={trendingPost.text} likes={trendingPost.likes} dislikes={trendingPost.dislikes} />
                 <p className='switch-post' onClick={nextPost}>Next</p>
             </article>
         </section>

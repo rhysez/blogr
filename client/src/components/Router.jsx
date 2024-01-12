@@ -1,8 +1,10 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from '../App';
-import Error from './Error';
-import AllPosts from './AllPosts'
+import Error from './main/Error';
+import AllPosts from './main/AllPosts'
+import SignUp from './authentication/SignUp'
+import LogIn from './authentication/LogIn'
 
 const Router = () => {
     const [posts, setPosts] = useState([]);
@@ -28,7 +30,17 @@ const Router = () => {
             path: '/posts',
             element: <AllPosts posts={posts}/>,
             errorElement: <Error />
-        }
+        },
+        {
+            path: '/signup',
+            element: <SignUp />,
+            errorElement: <Error />
+        },
+        {
+            path: '/login',
+            element: <LogIn />,
+            errorElement: <Error />
+        },
     ]);
 
     return <RouterProvider router={router} />

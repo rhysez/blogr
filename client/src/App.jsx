@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import Nav from './components/Nav'
-import Hero from './components/Hero'
-import Trending from './components/Trending'
+import Nav from './components/main/Nav'
+import Hero from './components/main/Hero'
+import Trending from './components/main/Trending'
 
 // start client using 'npm run dev' command
 
