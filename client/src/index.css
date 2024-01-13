@@ -199,12 +199,6 @@ nav {
   background-color: var(--palette-light-dim);
 
   transition: all ease-in-out 0.2s;
-  cursor: pointer;
-
-}
-
-.trending-post:hover {
-  background-color: var(--palette-light-dimmer);
 }
 
 @media(max-width: 800px) {
@@ -237,4 +231,14 @@ nav {
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.post-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#read-post {
+  margin: 0;
+  box-shadow: none;
 }

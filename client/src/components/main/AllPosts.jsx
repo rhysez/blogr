@@ -19,7 +19,6 @@ export default function AllPosts(props) {
         likes={item.likes}
         dislikes={item.dislikes}
         key={index}
-        onClick={() => {console.log('get post')}}
       />
     );
   });

@@ -4,6 +4,7 @@ import Post from './Post'
 function Trending(props) {
     const posts = props.posts
     const [trendingPost, setTrendingPost] = useState(posts[0])
+    
 
     function nextPost() {
         let currentIndex = posts.indexOf(trendingPost)
