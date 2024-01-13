@@ -11,7 +11,7 @@ const Router = () => {
     const [apiResponse, setApiResponse] = useState(false)
 
     useEffect(() => {
-    fetch('http://localhost:3000/api')
+    fetch('http://localhost:3000/api/posts')
     .then(res => res.json())
     .then(data => setPosts(data))
     .then(function() {

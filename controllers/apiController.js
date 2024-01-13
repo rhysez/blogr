@@ -2,17 +2,8 @@ require('dotenv').config();
 const User = require('../models/user');
 const Post = require('../models/post');
 const asyncHandler = require('express-async-handler');
-const bcrypt = require('bcryptjs');
-const { body, validationResult } = require('express-validator');
-const { DateTime } = require('luxon');
 
 // app controller functions
-
-// home controller
-exports.home = asyncHandler(async (req, res, next) => {
-    const posts = await Post.find({}).exec();
-    return res.json(posts);
-});
 
 // sign_up controllers
 exports.sign_up_get = asyncHandler(async (req, res, next) => {
@@ -34,12 +25,19 @@ exports.log_in_post = asyncHandler(async (req, res, next) => {
 
 // post controllers
 exports.posts_get = asyncHandler(async (req, res, next) => {
-    return res.json('NOT IMPLEMENTED: posts_get')
+    const posts = await Post.find({}).exec();
+    return res.json(posts);
 })
 
 exports.post_get = asyncHandler(async (req, res, next) => {
     return res.json('NOT IMPLEMENTED: posts_view_get')
 })
 
+// create_post controllers
+exports.create_post_get = asyncHandler(async (req, res, next) => {
+    return res.json('NOT IMPLEMENTED: create_post_get')
+})
 
-
+exports.create_post_post = asyncHandler(async (req, res, next) => {
+    return res.json('NOT IMPLEMENTED: create_post_post')
+})
