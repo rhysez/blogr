@@ -33,15 +33,18 @@ exports.posts_get = asyncHandler(async (req, res, next) => {
 
 // gets a specific post
 exports.post_get = asyncHandler(async (req, res, next) => {
-    const post = await Post.findById(req.params.id).exec();
-
-    if (post === null) {
-        const err = new Error('Post does not exist');
-        err.status = 404;
-        return next(err);
-    }
-
+    const post = await Post.findOne({_id: req.params.id}).exec();
     return res.json(post);
+})
+
+// likes a specified post
+exports.post_like_post = asyncHandler(async (req, res, next) => {
+    const postLiked = await Post.findAndModify({
+        query: { _id: req.params.id },
+        update: { $inc: { likes: 1 } },
+        upsert: true
+    }).exec();
+    return res.json(postLiked)
 })
 
 // CREATE_POST CONTROLLERS

@@ -5,7 +5,7 @@ import Error from './main/Error';
 import AllPosts from './main/AllPosts'
 import SignUp from './authentication/SignUp'
 import LogIn from './authentication/LogIn'
-import ViewPost from './main/ViewPost';
+import ActivePost from './main/ActivePost';
 
 // start client using 'npm run dev' command
 // start server using 'nodemon' command
@@ -23,7 +23,7 @@ const Router = () => {
         })
         .catch(err => console.log(err))
     }, [])
-
+    
     const router = createBrowserRouter([
         {
             path: '/',
@@ -46,8 +46,8 @@ const Router = () => {
             errorElement: <Error />
         },
         {
-            path: '/viewpost',
-            element: <ViewPost />,
+            path: '/posts/activepost',
+            element: <ActivePost />,
             errorElement: <Error />
         },
     ]);

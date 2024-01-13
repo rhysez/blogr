@@ -12,7 +12,9 @@ router.get('/log_in', api_controller.log_in_get);
 router.post('/log_in', api_controller.log_in_post);
 
 router.get('/posts', api_controller.posts_get);
-router.get('/posts/:postid', api_controller.post_get);
+router.get('/posts/:id', api_controller.post_get);
+
+router.post('/posts/:postid/like', api_controller.post_like_post)
 
 router.get('/create_post', api_controller.create_post_get);
 router.post('/create_post', api_controller.create_post_post);

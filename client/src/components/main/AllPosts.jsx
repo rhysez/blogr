@@ -15,10 +15,11 @@ export default function AllPosts(props) {
     return (
       <Post
         title={item.title}
-        text={item.text}
+        text="Read post to see more..."
         likes={item.likes}
         dislikes={item.dislikes}
-        key={index}
+        comments={item.comments.length}
+        key={item._id}
       />
     );
   });
