@@ -38,13 +38,18 @@ exports.post_get = asyncHandler(async (req, res, next) => {
 })
 
 // likes a specified post
-exports.post_like_post = asyncHandler(async (req, res, next) => {
-    const postLiked = await Post.findAndModify({
-        query: { _id: req.params.id },
-        update: { $inc: { likes: 1 } },
-        upsert: true
-    }).exec();
-    return res.json(postLiked)
+exports.post_like= asyncHandler(async (req, res, next) => {
+    // increments likes by 1
+    await Post.updateOne({_id: req.params.id}, {$inc: {likes: 1}});
+    // returns a 200 http status (successful)
+    return res.status(200).json({msg: "OK"});
+})
+
+exports.post_dislike= asyncHandler(async (req, res, next) => {
+    // increments dislikes by 1
+    await Post.updateOne({_id: req.params.id}, {$inc: {dislikes: 1}});
+    // returns a 200 http status (successful)
+    return res.status(200).json({msg: "OK"});
 })
 
 // CREATE_POST CONTROLLERS

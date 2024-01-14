@@ -310,3 +310,26 @@ nav {
   margin-left: 5%;
   margin-right: 50%;
 }
+
+.hidden {
+  display: none;
+}
+
+.form-comment {
+  display: flex;
+  flex-direction: column;
+  max-width: 50rem;
+  gap: 1rem;
+  margin-left: 5%;
+  margin-right: 50%;
+}
+
+.form-label {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+#form-submit {
+  font-size: 2rem;
+  font-weight: bold;
+}
