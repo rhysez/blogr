@@ -13,7 +13,7 @@ export default function App(props) {
     <>
       <Nav />
       <section className='hero-background'>
-        <Hero latestPost={props.posts[0].title} />
+        <Hero latestPost={props.posts[0]} />
       </section>
       <Trending posts={props.posts} />
     </>
