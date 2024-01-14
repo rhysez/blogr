@@ -1,7 +1,18 @@
 import Icon from '@mdi/react'
 import { mdiThumbUp, mdiThumbDown, mdiCommentText } from "@mdi/js"
+import { useNavigate } from 'react-router-dom'
 
 export default function Post(props) {
+    const navigate = useNavigate()
+
+    const navigateToPost = () => {
+        const target = `/posts/activepost`
+        navigate(target, {
+            state: {
+                id: props.id
+            }
+        })
+    }   
 
     return (
         <>
@@ -23,7 +34,7 @@ export default function Post(props) {
                     </div>
 
                     <section className='post-buttons'>
-                        <p className='hero-latest-post' id='read-post'>Read post</p>
+                        <p className='hero-latest-post' id='read-post' onClick={() => {navigateToPost()}}>Read post</p>
                     </section>
                 </section>
             </section>

@@ -3,23 +3,24 @@ import Icon from "@mdi/react";
 import { mdiThumbUp, mdiThumbDown } from "@mdi/js";
 import Nav from "./Nav";
 import Comment from "./Comment";
+import { useNavigate, useLocation } from "react-router-dom";
 
 // need to figure out how to fetch post
 // by the data model id as props
 // after clicking 'read post' on a post
 // user should be redirected to /posts/activepost
 // with the post object passed as props
-const ActivePost = () => {
+const ActivePost = (props) => {
+  const location = useLocation();
   const [post, setPost] = useState({});
   const [likes, setLikes] = useState(post.likes);
   const [dislikes, setDislikes] = useState(post.dislikes);
   const [comments, setComments] = useState(post.comments);
+  const [comment, setComment] = useState();
   const ref = useRef(null);
 
-  const testPostId = "659da6514993b35ddda0b363";
-
   useEffect(() => {
-    fetch("http://localhost:3000/api/posts/659da6514993b35ddda0b363")
+    fetch(`http://localhost:3000/api/posts/${location.state.id}`)
       .then((res) => res.json())
       .then((data) => {
         setPost(data);
@@ -31,13 +32,13 @@ const ActivePost = () => {
   }, []);
 
   const likePost = () => {
-    fetch("http://localhost:3000/api/posts/659da6514993b35ddda0b363/like")
+    fetch(`http://localhost:3000/api/posts/${location.state.id}/like`)
       .then(setLikes(post.likes))
       .catch((err) => console.log(err));
   };
 
   const dislikePost = () => {
-    fetch("http://localhost:3000/api/posts/659da6514993b35ddda0b363/dislike")
+    fetch(`http://localhost:3000/api/posts/${location.state.id}/dislike`)
       .then(setDislikes(post.dislikes))
       .catch((err) => console.log(err));
   };
@@ -48,6 +49,24 @@ const ActivePost = () => {
       ? (form.className = "form-comment")
       : (form.className = "hidden");
   };
+
+  // TO FIX
+  // sends empty values to server
+  // and fails express-validator checks
+  const handleCreateComment = async(e) => {
+    e.preventDefault()
+    const commentUser = document.getElementById('comment_user');
+    const commentText = document.getElementById('comment_text');
+    await setComment({comment_text: commentText.value, comment_user: commentUser.value})
+    
+    await fetch(`http://localhost:3000/api/posts/${location.state.id}/comment`, {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(comment)
+    })
+  }
 
   return (
     <>
@@ -87,33 +106,33 @@ const ActivePost = () => {
           </section>
         </article>
 
-        <form action="" method="POST" className="form-comment" ref={ref}>
-          <label htmlFor="comment-text" className="form-label">
+        {/* remember to add method='POST' */}
+        <form action="" method="POST" className="hidden" ref={ref} onSubmit={handleCreateComment}>
+          <label htmlFor="comment_text" className="form-label">
             Your thoughts:
           </label>
           <input
             type="text"
-            id="comment-text"
-            name="comment-text"
+            id="comment_text"
+            name="comment_text"
             required={true}
           />
 
-          <label htmlFor="comment-user" className="form-label">
+          <label htmlFor="comment_user" className="form-label">
             Your name:
           </label>
           <input
             type="text"
-            id="comment-user"
-            name="comment-user"
+            id="comment_user"
+            name="comment_user"
             required={true}
           />
 
-          <input
+          <button
             type="submit"
-            value="Post comment"
             className="hero-latest-post"
             id='form-submit'
-          />
+          >Post comment</button>
         </form>
 
         <section className="comments-container">

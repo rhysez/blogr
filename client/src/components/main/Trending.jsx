@@ -43,6 +43,7 @@ function Trending(props) {
           likes={trendingPost.likes}
           dislikes={trendingPost.dislikes}
           comments={trendingPost.comments.length}
+          id={trendingPost._id}
         />
         <p className="switch-post" onClick={nextPost}>
           Next

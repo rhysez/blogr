@@ -2,6 +2,7 @@ require('dotenv').config();
 const User = require('../models/user');
 const Post = require('../models/post');
 const asyncHandler = require('express-async-handler');
+const { body, validationResult } = require('express-validator');
 
 // app controller functions
 
@@ -38,19 +39,47 @@ exports.post_get = asyncHandler(async (req, res, next) => {
 })
 
 // likes a specified post
-exports.post_like= asyncHandler(async (req, res, next) => {
+exports.post_like = asyncHandler(async (req, res, next) => {
     // increments likes by 1
     await Post.updateOne({_id: req.params.id}, {$inc: {likes: 1}});
     // returns a 200 http status (successful)
     return res.status(200).json({msg: "OK"});
 })
 
-exports.post_dislike= asyncHandler(async (req, res, next) => {
+exports.post_dislike = asyncHandler(async (req, res, next) => {
     // increments dislikes by 1
     await Post.updateOne({_id: req.params.id}, {$inc: {dislikes: 1}});
     // returns a 200 http status (successful)
     return res.status(200).json({msg: "OK"});
 })
+
+// COMMENT CONTROLLERS
+
+// adds comment to a post
+exports.comment_post = [
+    body('comment_text', 'Comment must not be empty')
+    .trim()
+    .isLength({ min:1 })
+    .isString()
+    .escape(),
+
+    body('comment_user', 'Comment must have a name attached')
+    .trim()
+    .isLength({ min:1 })
+    .isString()
+    .escape(),
+
+    asyncHandler(async (req, res, next) => {
+        const errors = validationResult(req);
+        // add comment to post in db
+        Post.updateOne({id: req.params.id}, 
+        {$push: {comments: {text: req.body.comment_text, user: req.body.comment_user}}});
+
+        if (!errors.isEmpty()) {
+            console.log(errors)
+        }
+    })
+]
 
 // CREATE_POST CONTROLLERS
 

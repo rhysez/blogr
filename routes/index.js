@@ -21,6 +21,9 @@ router.get('/posts/:id', api_controller.post_get);
 router.get('/posts/:id/like', api_controller.post_like)
 router.get('/posts/:id/dislike', api_controller.post_dislike)
 
+// comment on a post
+router.post('/posts/:id/comment', api_controller.comment_post);
+
 // create_post get/post
 router.get('/create_post', api_controller.create_post_get);
 router.post('/create_post', api_controller.create_post_post);

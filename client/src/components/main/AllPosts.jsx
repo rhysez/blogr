@@ -20,6 +20,7 @@ export default function AllPosts(props) {
         dislikes={item.dislikes}
         comments={item.comments.length}
         key={item._id}
+        id={item._id}
       />
     );
   });
