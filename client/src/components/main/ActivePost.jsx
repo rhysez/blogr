@@ -61,16 +61,16 @@ const ActivePost = () => {
   const handleCreateComment = async(e) => {
     e.preventDefault()
 
-    const comment = {comment_text: commentText, comment_user: commentUser};
-    console.log(comment)
-
     try {
       const response = await fetch(`http://localhost:3000/api/posts/${location.state.id}/comment`, {
         method: "POST",
         headers: {
             'Content-type': 'application/json'
         },
-        body: JSON.stringify(comment)
+        body: JSON.stringify({
+          comment_text: commentText, 
+          comment_user: commentUser
+        })
       });
 
       if (response.ok) {
@@ -125,7 +125,6 @@ const ActivePost = () => {
           </section>
         </article>
 
-        {/* remember to add method='POST' */}
         <form action="" method="POST" className="hidden" ref={ref} onSubmit={handleCreateComment}>
           <label htmlFor="comment_text" className="form-label">
             Your thoughts:

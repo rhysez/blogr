@@ -71,14 +71,14 @@ exports.comment_post = [
 
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
-        // add comment to post in db
+
         await Post.updateOne({_id: req.params.id}, 
-        {$push: {comments: {text: req.body.comment_text, user: req.body.comment_user}}});
+        { $push: { "comments": { text: req.body.comment_text, user: req.body.comment_user } } } );
 
         if (!errors.isEmpty()) {
             console.log(errors)
         }
-    })
+    }),
 ]
 
 // CREATE_POST CONTROLLERS
