@@ -3,20 +3,20 @@ import Icon from "@mdi/react";
 import { mdiThumbUp, mdiThumbDown } from "@mdi/js";
 import Nav from "./Nav";
 import Comment from "./Comment";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-// need to figure out how to fetch post
-// by the data model id as props
-// after clicking 'read post' on a post
-// user should be redirected to /posts/activepost
-// with the post object passed as props
-const ActivePost = (props) => {
+const ActivePost = () => {
   const location = useLocation();
   const [post, setPost] = useState({});
   const [likes, setLikes] = useState(post.likes);
   const [dislikes, setDislikes] = useState(post.dislikes);
   const [comments, setComments] = useState(post.comments);
-  const [comment, setComment] = useState();
+
+  const [commentText, setCommentText] = useState("");
+  const [commentUser, setCommentUser] = useState("");
+
+  const [errors, setErrors] = useState([])
+
   const ref = useRef(null);
 
   useEffect(() => {
@@ -50,22 +50,41 @@ const ActivePost = (props) => {
       : (form.className = "hidden");
   };
 
-  // TO FIX
-  // sends empty values to server
-  // and fails express-validator checks
+  const handleText = (e) => {
+    setCommentText(e.target.value)
+  }
+
+  const handleUser = (e) => {
+    setCommentUser(e.target.value)
+  }
+
   const handleCreateComment = async(e) => {
     e.preventDefault()
-    const commentUser = document.getElementById('comment_user');
-    const commentText = document.getElementById('comment_text');
-    await setComment({comment_text: commentText.value, comment_user: commentUser.value})
-    
-    await fetch(`http://localhost:3000/api/posts/${location.state.id}/comment`, {
+
+    const comment = {comment_text: commentText, comment_user: commentUser};
+    console.log(comment)
+
+    try {
+      const response = fetch(`http://localhost:3000/api/posts/${location.state.id}/comment`, {
         method: "POST",
         headers: {
             'Content-type': 'application/json'
         },
         body: JSON.stringify(comment)
-    })
+      });
+
+      if (response.ok) {
+        window.location.reload(true);
+      } else if (response.status == 400) {
+        const errorData = await response.json();
+        const errors = errorData.details;
+        setErrors(errors.map(error => error.msg))
+      } else {
+        console.error('Could not save comment')
+      }
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   return (
@@ -115,6 +134,7 @@ const ActivePost = (props) => {
             type="text"
             id="comment_text"
             name="comment_text"
+            onChange={handleText}
             required={true}
           />
 
@@ -125,6 +145,7 @@ const ActivePost = (props) => {
             type="text"
             id="comment_user"
             name="comment_user"
+            onChange={handleUser}
             required={true}
           />
 
