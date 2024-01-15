@@ -29,6 +29,11 @@ const PostSchema = new Schema({
         required: true,
       },
 
+      user: {
+        type: String,
+        required: true
+      },
+
       date: {
         type: String,
         required: true,

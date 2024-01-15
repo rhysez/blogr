@@ -60,14 +60,12 @@ exports.comment_post = [
     body('comment_text', 'Comment must not be empty')
     .trim()
     .notEmpty()
-    .isString()
-    .escape(),
+    .isString(),
 
     body('comment_user', 'Comment must have a name attached')
     .trim()
     .notEmpty()
-    .isString()
-    .escape(),
+    .isString(),
 
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
