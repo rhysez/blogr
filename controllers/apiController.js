@@ -59,18 +59,20 @@ exports.post_dislike = asyncHandler(async (req, res, next) => {
 exports.comment_post = [
     body('comment_text', 'Comment must not be empty')
     .trim()
-    .isLength({ min:1 })
-    .isString(),
+    .notEmpty()
+    .isString()
+    .escape(),
 
     body('comment_user', 'Comment must have a name attached')
     .trim()
-    .isLength({ min:1 })
-    .isString(),
+    .notEmpty()
+    .isString()
+    .escape(),
 
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
         // add comment to post in db
-        Post.updateOne({id: req.params.id}, 
+        await Post.updateOne({_id: req.params.id}, 
         {$push: {comments: {text: req.body.comment_text, user: req.body.comment_user}}});
 
         if (!errors.isEmpty()) {

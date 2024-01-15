@@ -65,7 +65,7 @@ const ActivePost = () => {
     console.log(comment)
 
     try {
-      const response = fetch(`http://localhost:3000/api/posts/${location.state.id}/comment`, {
+      const response = await fetch(`http://localhost:3000/api/posts/${location.state.id}/comment`, {
         method: "POST",
         headers: {
             'Content-type': 'application/json'
