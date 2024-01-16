@@ -4,15 +4,16 @@
   font-family: 'Noto Serif', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   --palette-dark: #333333;
-  --palette-light: #ffffff; 
+  --palette-dark-dim: #535353;
+  --palette-light: #fcfcfc; 
   --palette-light-dim: #ececec; 
   --palette-light-dimmer: #c7c7c7; 
   --palette-sage: #e1f4f3; 
   --palette-brown: #706c61;
   --palette-browner: rgb(70, 64, 48);
 
-  --palette-orange: rgb(252, 221, 47);
-  --palette-red: rgb(194, 22, 22);
+  --palette-blue: #4756ca; 
+  --palette-blue-light: #c4c1e0;
 }
 
 #root {
@@ -43,7 +44,7 @@ nav {
   padding-right: 0;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: var(--palette-orange);
+  background-color: var(--palette-light-dim);
 }
 
 .nav-title {
@@ -55,7 +56,7 @@ nav {
   color: var(--palette-dark);
   box-shadow: 10px 5px 0px var(--palette-dark);
   border: 4px solid var(--palette-dark);
-  background-color: var(--palette-orange);
+  background-color: var(--palette-light);
 }
 
 .nav-button {
@@ -63,18 +64,18 @@ nav {
   margin-right: 2rem;
   padding: 1rem;
   font-size: 2rem;
-  color: var(--palette-light);
+  color: var(--palette-dark);
   box-shadow: 5px 2.5px 0px var(--palette-dark);
   border: 4px solid var(--palette-dark);
-  background-color: var(--palette-red);
+  background-color: var(--palette-light);
   text-decoration: none;
   cursor: pointer;
   transition: all ease-in-out 0.2s;
 }
 
 .nav-button:hover {
-  background-color: var(--palette-light);
-  color: var(--palette-dark);
+  background-color: var(--palette-dark-dim);
+  color: var(--palette-light-dim);
   box-shadow: 10px 5px 0px var(--palette-dark);
 }
 
@@ -89,7 +90,7 @@ nav {
 /* hero */
 
 .hero-background {
-  background-color: var(--palette-orange);
+  background-color: var(--palette-light-dim);
 }
 
 .hero {
@@ -106,8 +107,9 @@ nav {
 }
 
 .hero-latest-post {
-  background-color: var(--palette-red);
-  color: var(--palette-light);
+  font-size: 2rem;
+  background-color: var(--palette-light);
+  color: var(--palette-dark);
   padding: 1rem;
   box-shadow: 5px 2.5px 0px var(--palette-dark);
   border: 2px solid var(--palette-dark);
@@ -117,18 +119,18 @@ nav {
 }
 
 .hero-latest-post:hover {
-  background-color: var(--palette-light);
-  color: var(--palette-dark);
+  background-color: var(--palette-dark-dim);
+  color: var(--palette-light-dim);
   box-shadow: 10px 5px 0px var(--palette-dark);
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: 6rem;
   margin: 0;
 }
 
 .hero-subtitle {
-  font-size: 1.75rem;
+  font-size: 2.5rem;
   margin: 0;
 }
 
