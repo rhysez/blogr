@@ -280,11 +280,11 @@ nav {
   cursor: pointer;
 }
 
-.active-like:hover {
+.active-like:hover, .active-like:focus {
   filter: invert(43%) sepia(95%) saturate(3242%) hue-rotate(94deg) brightness(96%) contrast(96%);
 }
 
-.active-dislike:hover {
+.active-dislike:hover, .active-dislike:focus {
   filter: invert(66%) sepia(71%) saturate(4394%) hue-rotate(11deg) brightness(102%) contrast(150%);
 }
 

@@ -5,13 +5,15 @@ import Nav from "./Nav";
 import Comment from "./Comment";
 import { useLocation } from "react-router-dom";
 
-const ActivePost = () => {
+const ActivePost = (props) => {
   const location = useLocation();
+
   const [post, setPost] = useState({});
+
   const [likes, setLikes] = useState(post.likes);
   const [dislikes, setDislikes] = useState(post.dislikes);
-  const [comments, setComments] = useState(post.comments);
 
+  const [comments, setComments] = useState(post.comments);
   const [commentText, setCommentText] = useState("");
   const [commentUser, setCommentUser] = useState("");
 
@@ -35,12 +37,16 @@ const ActivePost = () => {
     fetch(`http://localhost:3000/api/posts/${location.state.id}/like`)
       .then(setLikes(post.likes))
       .catch((err) => console.log(err));
+
+    setLikes(post.likes + 1);
   };
 
   const dislikePost = () => {
     fetch(`http://localhost:3000/api/posts/${location.state.id}/dislike`)
       .then(setDislikes(post.dislikes))
       .catch((err) => console.log(err));
+
+    setDislikes(post.dislikes + 1);
   };
 
   const handleCommentForm = () => {
@@ -73,8 +79,10 @@ const ActivePost = () => {
         })
       });
 
+      location.reload();
+
       if (response.ok) {
-        window.location.reload(true);
+        console.log("Comment saved successfully")
       } else if (response.status == 400) {
         const errorData = await response.json();
         const errors = errorData.details;
