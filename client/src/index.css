@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cardo&display=swap');
 
 :root {
-  font-family: 'Noto Serif', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, 'Noto Serif', Helvetica, Arial, sans-serif;
 
   --palette-dark: #333333;
   --palette-dark-dim: #535353;
   --palette-light: #fcfcfc; 
   --palette-light-dim: #ececec; 
-  --palette-light-dimmer: #c7c7c7; 
+  --palette-light-dimmer: #dddddd; 
   --palette-sage: #e1f4f3; 
   --palette-brown: #706c61;
   --palette-browner: rgb(70, 64, 48);
@@ -28,7 +29,7 @@ html {
 body, html {
   margin: 0;
   padding: 0;
-  background-color: var(--palette-dark);
+  background-color: var(--palette-light-dim);
 }
 
 /* nav */ 
@@ -38,13 +39,12 @@ nav {
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-  box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.3);
   margin: 0;
   padding-left: 0;
   padding-right: 0;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: var(--palette-light-dim);
+  background-color: var(--palette-light-dimmer);
 }
 
 .nav-title {
@@ -90,7 +90,7 @@ nav {
 /* hero */
 
 .hero-background {
-  background-color: var(--palette-light-dim);
+  background-color: var(--palette-light-dimmer);
 }
 
 .hero {
@@ -132,6 +132,8 @@ nav {
 .hero-subtitle {
   font-size: 2.5rem;
   margin: 0;
+  font-family: Cardo, 'Noto Serif', Helvetica, Arial, sans-serif;
+  font-style: italic;
 }
 
 @media (max-width: 600px) {
@@ -154,7 +156,7 @@ nav {
 
 .trending-title {
   margin: 0;
-  color: var(--palette-light);
+  color: var(--palette-dark);
   padding: 2rem;
   font-size: 3.25rem;
 }
@@ -167,14 +169,14 @@ nav {
 }
 
 .switch-post {
-  color: var(--palette-light);
+  color: var(--palette-dark);
   font-size: 2rem;
   cursor: pointer;
 }
 
 .trending-post-title {
   font-size: 2rem;
-  color: var(--palette-light);
+  color: var(--palette-dark);
   font-weight: 200;
 }
 
@@ -201,6 +203,9 @@ nav {
   background-color: var(--palette-light-dim);
 
   transition: all ease-in-out 0.2s;
+
+  font-family: Cardo, 'Noto Serif', Helvetica, Arial, sans-serif;
+  font-style: italic;
 }
 
 @media(max-width: 800px) {
@@ -236,9 +241,20 @@ nav {
   gap: 10px;
 }
 
+.like-count, .dislike-count {
+  color: var(--palette-dark);
+}
+
 .post-buttons {
   display: flex;
   justify-content: space-between;
+  font-family: Montserrat, 'Noto Serif', Helvetica, Arial, sans-serif;
+  font-style: normal;
+}
+
+.post-title {
+  font-family: Montserrat, 'Noto Serif', Helvetica, Arial, sans-serif;
+  font-style: normal;
 }
 
 #read-post {
@@ -254,17 +270,14 @@ nav {
   max-width: 90%;
   margin: auto;
   min-height: 100svh;
-
   color: var(--palette-light);
-  border: 4px solid var(--palette-dark);
-  background-color: var(--palette-dark);
-
   transition: all ease-in-out 0.2s;
 }
 
 .active-post-title {
   font-size: 4rem;
   text-align: center;
+  color: var(--palette-dark);
 }
 
 .active-post-text-container {
@@ -275,11 +288,13 @@ nav {
 .active-post-text {
   font-size: 2rem;
   text-align: left;
+  color: var(--palette-dark);
 }
 
 .active-like,
 .active-dislike {
   cursor: pointer;
+  filter: invert(16%) sepia(66%) saturate(0%) hue-rotate(252deg) brightness(25%) contrast(89%);
 }
 
 .active-like:hover, .active-like:focus {
@@ -311,6 +326,10 @@ nav {
   margin-top: 4rem;
   margin-left: 5%;
   margin-right: 50%;
+}
+
+label {
+  color: var(--palette-dark);
 }
 
 .hidden {

@@ -32,7 +32,7 @@ function Trending(props) {
 
   return (
     <section className="trending-container">
-      <h2 className="trending-title">Our top three posts!</h2>
+      <h2 className="trending-title">Our top three posts</h2>
       <h3 className="trending-post-title">{trendingPost.title}</h3>
       <article className="trending-post-container">
         <p className="switch-post" onClick={previousPost}>
