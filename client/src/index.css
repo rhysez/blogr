@@ -6,15 +6,16 @@
 
   --palette-dark: #333333;
   --palette-dark-dim: #535353;
+
   --palette-light: #fcfcfc; 
   --palette-light-dim: #ececec; 
-  --palette-light-dimmer: #dddddd; 
-  --palette-sage: #e1f4f3; 
+  --palette-light-dimmer: #dddddd;
+
   --palette-brown: #706c61;
   --palette-browner: rgb(70, 64, 48);
 
-  --palette-blue: #b5bbe9; 
-  --palette-blue-light: #c4c1e0;
+  --palette-sage: #e1f4f3; 
+  --palette-sage-bright: #b2eecd; 
 }
 
 #root {
@@ -29,7 +30,11 @@ html {
 body, html {
   margin: 0;
   padding: 0;
-  background-color: var(--palette-light-dim);
+  background-color: var(--palette-light);
+}
+
+.gradient-box {
+  background: linear-gradient(var(--palette-dark-dim), var(--palette-light));
 }
 
 /* nav */ 
@@ -44,7 +49,6 @@ nav {
   padding-right: 0;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: var(--palette-light-dimmer);
 }
 
 .nav-title {
@@ -53,10 +57,7 @@ nav {
   margin-right: 2rem;
   padding: 1rem;
   font-size: 4.5rem;
-  color: var(--palette-dark);
-  box-shadow: 10px 5px 0px var(--palette-dark);
-  border: 4px solid var(--palette-dark);
-  background-color: var(--palette-blue);
+  color: var(--palette-light);
 }
 
 .nav-button {
@@ -64,19 +65,14 @@ nav {
   margin-right: 2rem;
   padding: 1rem;
   font-size: 2rem;
-  color: var(--palette-dark);
-  box-shadow: 5px 2.5px 0px var(--palette-dark);
-  border: 4px solid var(--palette-dark);
-  background-color: var(--palette-blue);
+  color: var(--palette-light);
   text-decoration: none;
   cursor: pointer;
   transition: all ease-in-out 0.2s;
 }
 
 .nav-button:hover {
-  background-color: var(--palette-dark-dim);
-  color: var(--palette-light-dim);
-  box-shadow: 10px 5px 0px var(--palette-dark);
+  color: var(--palette-sage-bright);
 }
 
 @media (max-width: 600px) {
@@ -88,10 +84,6 @@ nav {
 }
 
 /* hero */
-
-.hero-background {
-  background-color: var(--palette-light-dimmer);
-}
 
 .hero {
   display: flex;
@@ -108,11 +100,10 @@ nav {
 
 .hero-latest-post {
   font-size: 2rem;
-  background-color: var(--palette-blue);
+  background-color: var(--palette-sage-bright);
   color: var(--palette-dark);
   padding: 1rem;
-  box-shadow: 5px 2.5px 0px var(--palette-dark);
-  border: 2px solid var(--palette-dark);
+  border-radius: 10px;
   cursor: pointer;
   margin-top: 3rem;
   transition: all ease-in-out 0.2s;
@@ -198,9 +189,9 @@ nav {
   width: 100%;
 
   color: var(--palette-dark);
-  box-shadow: 10px 10px 0px var(--palette-light-dimmer);
-  border: 4px solid var(--palette-dark);
+  box-shadow: 10px 10px 10px var(--palette-light-dimmer);
   background-color: var(--palette-light-dim);
+  border-radius: 10px;
 
   transition: all ease-in-out 0.2s;
 
@@ -241,8 +232,15 @@ nav {
   gap: 10px;
 }
 
-.like-count, .dislike-count {
+.like-count, .dislike-count, .comment-count {
   color: var(--palette-dark);
+  font-style: normal;
+  font-family: Montserrat, 'Noto Serif', Helvetica, Arial, sans-serif;
+}
+
+.comment-count {
+  display: flex;
+  align-items: center;
 }
 
 .post-buttons {
@@ -277,7 +275,7 @@ nav {
 .active-post-title {
   font-size: 4rem;
   text-align: center;
-  color: var(--palette-dark);
+  color: var(--palette-light);
 }
 
 .active-post-text-container {
@@ -288,7 +286,7 @@ nav {
 .active-post-text {
   font-size: 2rem;
   text-align: left;
-  color: var(--palette-dark);
+  color: var(--palette-light);
 }
 
 .active-like,
@@ -312,9 +310,9 @@ nav {
   font-size: 1.75rem;
   text-align: left;
   color: var(--palette-dark);
-  box-shadow: 5px 5px 0px var(--palette-light-dimmer);
-  border: 4px solid var(--palette-dark);
   background-color: var(--palette-light-dim);
+  border-radius: 10px;
+  border: 2px solid var(--palette-sage-bright);
 
   transition: all ease-in-out 0.2s;
 }

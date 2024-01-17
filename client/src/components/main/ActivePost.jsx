@@ -97,7 +97,8 @@ const ActivePost = (props) => {
 
   return (
     <>
-      <Nav />
+     <section className='gradient-box'>
+     <Nav />
       <section className="active-post">
         <h2 className="active-post-title">{post.title}</h2>
         <article className="active-post-text-container">
@@ -169,6 +170,7 @@ const ActivePost = (props) => {
           })}
         </section>
       </section>
+     </section>
     </>
   );
 };

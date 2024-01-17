@@ -11,9 +11,11 @@ export default function App(props) {
 
   return (
     <>
-      <Nav />
-      <section className='hero-background'>
-        <Hero latestPost={props.posts[0]} />
+      <section className='gradient-box'>
+        <Nav />
+        <section className='hero-background'>
+          <Hero latestPost={props.posts[0]} />
+        </section>
       </section>
       <Trending posts={props.posts} />
     </>
