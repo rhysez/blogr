@@ -112,7 +112,7 @@ const ActivePost = (props) => {
                   path={mdiThumbUp}
                   size={2}
                 />
-                <span className="like-count">{likes}</span>
+                <span className="active-like-count">{likes}</span>
               </div>
               <div className="dislikes">
                 <Icon
@@ -121,7 +121,7 @@ const ActivePost = (props) => {
                   path={mdiThumbDown}
                   size={2}
                 />
-                <span className="dislike-count">{dislikes}</span>
+                <span className="active-dislike-count">{dislikes}</span>
               </div>
             </div>
             <p

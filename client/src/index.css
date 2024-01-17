@@ -16,6 +16,8 @@
 
   --palette-sage: #e1f4f3; 
   --palette-sage-bright: #b2eecd; 
+
+  --palette-green: rgb(125, 167, 125);
 }
 
 #root {
@@ -31,10 +33,6 @@ body, html {
   margin: 0;
   padding: 0;
   background-color: var(--palette-light);
-}
-
-.gradient-box {
-  background: linear-gradient(var(--palette-dark-dim), var(--palette-light));
 }
 
 /* nav */ 
@@ -57,7 +55,7 @@ nav {
   margin-right: 2rem;
   padding: 1rem;
   font-size: 4.5rem;
-  color: var(--palette-light);
+  color: var(--palette-dark);
 }
 
 .nav-button {
@@ -65,14 +63,10 @@ nav {
   margin-right: 2rem;
   padding: 1rem;
   font-size: 2rem;
-  color: var(--palette-light);
+  color: var(--palette-dark);
   text-decoration: none;
   cursor: pointer;
   transition: all ease-in-out 0.2s;
-}
-
-.nav-button:hover {
-  color: var(--palette-sage-bright);
 }
 
 @media (max-width: 600px) {
@@ -92,10 +86,16 @@ nav {
   justify-content: center;
   gap: 4rem;
   padding-top: 15rem;
-  padding-bottom: 5rem;
+  padding-bottom: 15rem;
   padding-left: 2rem;
   padding-right: 2rem;
   font-size: 1.5rem;
+
+  max-width: 80%;
+  margin: auto;
+  margin-top: 7.5rem;
+
+  background-color: var(--palette-dark);
 }
 
 .hero-latest-post {
@@ -103,7 +103,6 @@ nav {
   background-color: var(--palette-sage-bright);
   color: var(--palette-dark);
   padding: 1rem;
-  border-radius: 10px;
   cursor: pointer;
   margin-top: 3rem;
   transition: all ease-in-out 0.2s;
@@ -112,12 +111,12 @@ nav {
 .hero-latest-post:hover {
   background-color: var(--palette-dark-dim);
   color: var(--palette-light-dim);
-  box-shadow: 10px 5px 0px var(--palette-dark);
 }
 
 .hero-title {
   font-size: 6rem;
   margin: 0;
+  color: var(--palette-light);
 }
 
 .hero-subtitle {
@@ -125,6 +124,7 @@ nav {
   margin: 0;
   font-family: Cardo, 'Noto Serif', Helvetica, Arial, sans-serif;
   font-style: italic;
+  color: var(--palette-light);
 }
 
 @media (max-width: 600px) {
@@ -140,9 +140,14 @@ nav {
 
 .trending-container {
   padding: 2rem;
-  padding-top: 5rem;
+  padding-top: 10rem;
   padding-bottom: 10rem;
-  min-height: 75vh;
+  max-width: 80%;
+  margin: auto;
+  margin-top: 7.5rem;
+  margin-bottom: 7.5rem;
+
+  background-color: var(--palette-green);
 }
 
 .trending-title {
@@ -189,9 +194,7 @@ nav {
   width: 100%;
 
   color: var(--palette-dark);
-  box-shadow: 10px 10px 10px var(--palette-light-dimmer);
   background-color: var(--palette-light-dim);
-  border-radius: 10px;
 
   transition: all ease-in-out 0.2s;
 
@@ -211,13 +214,20 @@ nav {
 /* all posts */
 
 .all-posts-container {
-  margin-top: 8rem;
-  margin-bottom: 8rem;
+  padding: 2rem;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  max-width: 80%;
+  margin: auto;
+  margin-top: 7.5rem;
+  margin-bottom: 7.5rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4rem;
-  padding: 1rem;
+
+  background-color: var(--palette-green);
 }
 
 .likes-dislikes {
@@ -236,6 +246,10 @@ nav {
   color: var(--palette-dark);
   font-style: normal;
   font-family: Montserrat, 'Noto Serif', Helvetica, Arial, sans-serif;
+}
+
+.active-like-count, .active-dislike-count {
+  color: var(--palette-light);
 }
 
 .comment-count {
@@ -263,13 +277,18 @@ nav {
 /* active post */
 
 .active-post {
-  padding: 1rem;
   font-size: 1.75rem;
-  max-width: 90%;
+  padding: 2rem;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  max-width: 80%;
   margin: auto;
+  margin-top: 7.5rem;
   min-height: 100svh;
-  color: var(--palette-light);
+  color: var(--palette-dark);
   transition: all ease-in-out 0.2s;
+
+  background-color: var(--palette-dark);
 }
 
 .active-post-title {
@@ -292,7 +311,7 @@ nav {
 .active-like,
 .active-dislike {
   cursor: pointer;
-  filter: invert(16%) sepia(66%) saturate(0%) hue-rotate(252deg) brightness(25%) contrast(89%);
+  filter: invert(16%) sepia(66%) saturate(0%) hue-rotate(252deg) brightness(300%) contrast(89%);
 }
 
 .active-like:hover, .active-like:focus {
@@ -311,8 +330,6 @@ nav {
   text-align: left;
   color: var(--palette-dark);
   background-color: var(--palette-light-dim);
-  border-radius: 10px;
-  border: 2px solid var(--palette-sage-bright);
 
   transition: all ease-in-out 0.2s;
 }
@@ -324,6 +341,14 @@ nav {
   margin-top: 4rem;
   margin-left: 5%;
   margin-right: 50%;
+}
+
+@media (max-width: 1000px) {
+  .comments-container {
+    margin-left:0%;
+    margin-right: 0%;
+    width: 100%;
+  }
 }
 
 label {
