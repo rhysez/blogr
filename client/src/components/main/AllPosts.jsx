@@ -1,9 +1,11 @@
 import Post from "./Post";
 import Nav from "./Nav";
 import Hero from "./Hero";
+import { useLocation } from "react-router-dom";
 
 export default function AllPosts(props) {
   const posts = props.posts;
+  const location = useLocation();
 
   if (!posts) {
     return (
@@ -11,7 +13,7 @@ export default function AllPosts(props) {
     );
   }
 
-  const postsMapped = posts.map((item, index) => {
+  const postsMapped = posts.map(item => {
     return (
       <Post
         title={item.title}
@@ -29,7 +31,7 @@ export default function AllPosts(props) {
     <>
       <Nav />
       <section className="hero-background">
-        <Hero latestPost={props.posts[0].title} />
+        <Hero latestPost={props.posts[0]} />
       </section>
       <section className="all-posts-container">{postsMapped}</section>
     </>
