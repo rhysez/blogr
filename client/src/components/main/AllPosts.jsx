@@ -31,9 +31,6 @@ export default function AllPosts(props) {
     <>
       <section className='gradient-box'>
         <Nav />
-        <section className="hero-background">
-          <Hero latestPost={props.posts[0]} />
-        </section>
       </section>
       <section className="all-posts-container">{postsMapped}</section>
     </>
