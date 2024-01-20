@@ -2,17 +2,58 @@ require('dotenv').config();
 const User = require('../models/user');
 const Post = require('../models/post');
 const asyncHandler = require('express-async-handler');
+const bcrypt = require('bcryptjs');
 const { body, validationResult } = require('express-validator');
 
 // app controller functions
 
 // SIGN_UP CONTROLLERS
-exports.sign_up_get = asyncHandler(async (req, res, next) => {
-    return res.json('NOT IMPLEMENTED: sign_up_get')
-})
-
 exports.sign_up_post = asyncHandler(async (req, res, next) => {
-    return res.json('NOT IMPLEMENTED: sign_up_post')
+    body('firstname')
+        .trim()
+        .isLength({ min: 1 })
+        .escape()
+        .withMessage('First name must be specified')
+        .isAlphanumeric()
+        .withMessage('First name must only contain alphanumeric characters'),
+    body('lastname')
+        .trim()
+        .isLength({ min: 1 })
+        .escape()
+        .withMessage('Last name must be specified')
+        .isAlphanumeric()
+        .withMessage('Last name must only contain alphanumeric characters'),
+    body('username')
+        .trim()
+        .isLength({ min: 1 })
+        .escape()
+        .withMessage('User name must be specified'),
+    body('password')
+        .trim()
+        .isLength({ min: 1 })
+        .escape(),
+
+    asyncHandler(async (req, res, next) => {
+        try {
+            bcrypt.hash(req.body.password, 10, async(err, hashedPassword) => {
+                if (err) {
+                    console.error(err)
+                }
+                if (req.body.confirmpassword === req.body.password) {
+                    const user = new User({
+                        first_name: req.body.firstname,
+                        last_name: req.body.lastname,
+                        user_name: req.body.username,
+                        password: hashedPassword
+                    });
+                    const result = await user.save();
+                    console.log("User saved successfully");
+                }
+            })
+        } catch(err) {
+            return next(err)
+        }
+    })
 })
 
 // LOG_IN CONTROLLERS
