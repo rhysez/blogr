@@ -18,7 +18,6 @@ export default function App(props) {
     <>
       <section className='gradient-box'>
         <Nav />
-        <h2 style={{marginTop: '7.5rem'}}>Welcome to blogr, a full stack MERN application that allows you to view, like and comment on blog posts.</h2>
         <section className='hero-background'>
           <Hero latestPost={props.posts[0]} />
         </section>
