@@ -17,8 +17,6 @@ const ActivePost = (props) => {
   const [commentText, setCommentText] = useState("");
   const [commentUser, setCommentUser] = useState("");
 
-  const [updateComments, setUpdateComments] = useState(1);
-
   const [errors, setErrors] = useState([])
 
   const ref = useRef(null);

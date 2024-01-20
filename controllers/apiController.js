@@ -8,7 +8,7 @@ const { body, validationResult } = require('express-validator');
 // app controller functions
 
 // SIGN_UP CONTROLLERS
-exports.sign_up_post = asyncHandler(async (req, res, next) => {
+exports.sign_up_post = [
     body('firstname')
         .trim()
         .isLength({ min: 1 })
@@ -32,8 +32,18 @@ exports.sign_up_post = asyncHandler(async (req, res, next) => {
         .trim()
         .isLength({ min: 1 })
         .escape(),
+    body('confirmpassword')
+        .trim()
+        .isLength({ min: 1 })
+        .escape(),
 
     asyncHandler(async (req, res, next) => {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            console.log(errors);
+        }
+
         try {
             bcrypt.hash(req.body.password, 10, async(err, hashedPassword) => {
                 if (err) {
@@ -54,7 +64,7 @@ exports.sign_up_post = asyncHandler(async (req, res, next) => {
             return next(err)
         }
     })
-})
+]
 
 // LOG_IN CONTROLLERS
 exports.log_in_get = asyncHandler(async (req, res, next) => {
