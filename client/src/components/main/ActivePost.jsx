@@ -17,6 +17,8 @@ const ActivePost = (props) => {
   const [commentText, setCommentText] = useState("");
   const [commentUser, setCommentUser] = useState("");
 
+  const [updateComments, setUpdateComments] = useState(1);
+
   const [errors, setErrors] = useState([])
 
   const ref = useRef(null);
@@ -83,6 +85,7 @@ const ActivePost = (props) => {
 
       if (response.ok) {
         console.log("Comment saved successfully")
+        setComments(post.comments)
       } else if (response.status == 400) {
         const errorData = await response.json();
         const errors = errorData.details;

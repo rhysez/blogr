@@ -1,4 +1,5 @@
 const Comment = (props) => {
+
     return (
         <section className='comment'>
             <p className='comment-text'>{props.text}</p>
