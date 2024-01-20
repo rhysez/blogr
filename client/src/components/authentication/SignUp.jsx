@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
+import Nav from '../main/Nav';
 
 export default function SignUp() {
     const [firstName, setFirstName] = useState("");
@@ -6,7 +8,18 @@ export default function SignUp() {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [errors, setErrors] = useState([])
+    const [errors, setErrors] = useState([]);
+
+    const navigate = useNavigate();
+
+    const navigateToHome = () => {
+        const target = `/`
+        navigate(target, {
+            state: {
+                userName: firstName
+            }
+        })
+    }
 
     const handleFirstName = (e) => {
         setFirstName(e.target.value)
@@ -63,22 +76,23 @@ export default function SignUp() {
 
     return (
         <>
+            <Nav />
             <form className="signup-form" action="" method="POST" onSubmit={handleCreateAccount}>
                 <h2 className='signup-title'>Sign Up</h2>
 
-                <label htmlFor="firstname">First name</label>
+                <label htmlFor="firstname" className='form-label'>First name</label>
                 <input type="text" name='firstname' className='form-input' id='firstname' onChange={handleFirstName} />
 
-                <label htmlFor="lastname">Last name</label>
+                <label htmlFor="lastname" className='form-label'>Last name</label>
                 <input type="text" name='lastname' className='form-input' id='lastname' onChange={handleLastName} />
 
-                <label htmlFor="username">Username</label>
+                <label htmlFor="username" className='form-label'>Username</label>
                 <input type="text" name='username' className='form-input' id='username' onChange={handleUserName} />
 
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password" className='form-label'>Password</label>
                 <input type="password" name='password' className='form-input' id='password' onChange={handlePassword} />
 
-                <label htmlFor="confirmpassword">Confirm password</label>
+                <label htmlFor="confirmpassword" className='form-label'>Confirm password</label>
                 <input type="password" name='confirmpassword' className='form-input' id='confirmpassword' onChange={handleConfirmPassword} />
 
                 <button className="signup-submit" type="submit">Sign Up</button>

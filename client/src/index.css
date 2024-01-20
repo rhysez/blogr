@@ -370,10 +370,41 @@ label {
 
 .form-label {
   font-weight: bold;
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 #form-submit {
   font-size: 2rem;
   font-weight: bold;
+}
+
+/* sign up */
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 30rem;
+  margin: auto;
+  gap: 1rem;
+}
+
+.signup-title {
+  font-size: 4rem;
+}
+
+.signup-submit {
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: var(--palette-dark);
+  color: var(--palette-light);
+  border: none;
+  padding-top: 7.5px;
+  padding-bottom: 7.5px;
+  cursor: pointer;
+}
+
+.form-input {
+  border: solid 2px var(--palette-dark);
+  text-align: center;
+  font-size: 2rem;
 }
