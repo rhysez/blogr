@@ -6,7 +6,6 @@ import SignUp from './components/authentication/SignUp';
 import { useLocation } from "react-router-dom";
 
 
-
 export default function App(props) {
   const location = useLocation();
 

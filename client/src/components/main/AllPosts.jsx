@@ -2,6 +2,7 @@ import Post from "./Post";
 import Nav from "./Nav";
 import Hero from "./Hero";
 import { useLocation } from "react-router-dom";
+import * as React from 'react';
 
 export default function AllPosts(props) {
   const posts = props.posts;

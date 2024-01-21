@@ -25,5 +25,9 @@
     "nodemon": "^3.0.2",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "source-map-loader": "^5.0.0",
+    "ts-loader": "^9.5.1"
   }
 }
