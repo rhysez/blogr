@@ -3,9 +3,6 @@ import Nav from "../main/Nav";
 import { useNavigate } from "react-router-dom";
 
 export default function LogIn(props) {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-
     const navigate = useNavigate()
 
     return (

@@ -9,7 +9,6 @@ const api_controller = require('../controllers/apiController');
 router.post('/sign_up', api_controller.sign_up_post);
 
 // log_in get/post
-router.get('/log_in', api_controller.log_in_get);
 router.post('/log_in', api_controller.log_in_post);
 
 // post get

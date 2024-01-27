@@ -107,7 +107,7 @@ const Router = () => {
               },
               body: JSON.stringify({
                 username: loginUsername,
-                password: loginUsername,
+                password: loginPassword,
               })
             })
   
