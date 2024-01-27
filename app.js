@@ -39,6 +39,7 @@ if (!mongodb) {
 main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongodb);
+  console.log('Connected to blogr database')
 };
 
 // view engine setup
