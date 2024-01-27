@@ -31,7 +31,6 @@ const Router = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
-    const [success, setSuccess] = useState(false);
 
     // sign up handlers
     const handleFirstName = (e) => {
@@ -83,10 +82,48 @@ const Router = () => {
         } catch (err) {
           console.error(err)
         }
-
-        
     }
     
+    // log in info captured from form
+    const [loginUsername, setLoginUsername] = useState("")
+    const [loginPassword, setLoginPassword] = useState("")
+
+    const handleLoginUsername = (e) => {
+        setLoginUsername(e.target.value)
+    }
+
+    const handleLoginPassword = (e) => {
+        setLoginPassword(e.target.value)
+    }
+
+    const handleVerifyAccount = async(e) => {
+        e.preventDefault()
+
+        try {
+            const response = await fetch(`https://blogr-production.up.railway.app/api/log_in`, {
+              method: "POST",
+              headers: {
+                  'Content-type': 'application/json'
+              },
+              body: JSON.stringify({
+                username: loginUsername,
+                password: loginUsername,
+              })
+            })
+  
+            if (response.ok) {
+              console.log("Account is verified")
+            } else if (response.status == 400) {
+              setErrors(errorData.details)
+              console.log(errors)
+            } else {
+              console.error('Could not find account')
+            }
+          } catch (err) {
+            console.error(err)
+          }
+    }
+
     const router = createBrowserRouter([
         {
             path: '/',
@@ -111,7 +148,10 @@ const Router = () => {
         },
         {
             path: '/login',
-            element: <LogIn />,
+            element: <LogIn
+                        handleLoginUsername={handleLoginUsername}
+                        handleLoginPassword={handleLoginPassword}
+                        handleVerifyAccount={handleVerifyAccount} />,
             errorElement: <Error />
         },
         {

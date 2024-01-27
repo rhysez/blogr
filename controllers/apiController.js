@@ -66,13 +66,25 @@ exports.sign_up_post = [
     })
 ]
 
-// LOG_IN CONTROLLERS
-exports.log_in_get = asyncHandler(async (req, res, next) => {
-    return res.json('NOT IMPLEMENTED: log_in_get')
-})
+// LOGIN CONTROLLERS
 
+// verifies account details
 exports.log_in_post = asyncHandler(async (req, res, next) => {
-    return res.json('NOT IMPLEMENTED: log_in_post')
+    const user = await User.findOne({ user_name: req.body.username })
+
+    if (user) {
+        const result = req.body.password === user.password
+
+        if (result) {
+            res.json(user)
+
+        } else {
+            res.json({message: 'username or password does not match'})
+
+        }
+    } else {
+        res.json({message: 'username or password does not match'})
+    }
 })
 
 // POST CONTROLLERS
