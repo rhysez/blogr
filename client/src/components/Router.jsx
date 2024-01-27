@@ -15,7 +15,7 @@ const Router = () => {
 
     // connects to server and gets posts via /posts route
     useEffect(() => {
-        fetch('https://blogr-production.up.railway.app/posts')
+        fetch('https://blogr-production.up.railway.app/api/posts')
         .then(res => res.json())
         .then(data => setPosts(data))
         .then(function() {

@@ -22,7 +22,7 @@ const ActivePost = (props) => {
   const ref = useRef(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/posts/${location.state.id}`)
+    fetch(`https://blogr-production.up.railway.app/api/posts/${location.state.id}`)
       .then((res) => res.json())
       .then((data) => {
         setPost(data);
@@ -34,7 +34,7 @@ const ActivePost = (props) => {
   }, []);
 
   const likePost = () => {
-    fetch(`http://localhost:3000/api/posts/${location.state.id}/like`)
+    fetch(`https://blogr-production.up.railway.app/api/posts/${location.state.id}/like`)
       .then(setLikes(post.likes))
       .catch((err) => console.log(err));
 
@@ -42,7 +42,7 @@ const ActivePost = (props) => {
   };
 
   const dislikePost = () => {
-    fetch(`http://localhost:3000/api/posts/${location.state.id}/dislike`)
+    fetch(`https://blogr-production.up.railway.app/api/posts/${location.state.id}/dislike`)
       .then(setDislikes(post.dislikes))
       .catch((err) => console.log(err));
 
@@ -68,7 +68,7 @@ const ActivePost = (props) => {
     e.preventDefault()
 
     try {
-      const response = await fetch(`http://localhost:3000/api/posts/${location.state.id}/comment`, {
+      const response = await fetch(`https://blogr-production.up.railway.app/api/posts/${location.state.id}/comment`, {
         method: "POST",
         headers: {
             'Content-type': 'application/json'
