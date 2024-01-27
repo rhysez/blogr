@@ -386,6 +386,7 @@ label {
   max-width: 30rem;
   margin: auto;
   gap: 1rem;
+  padding-bottom: 2rem;
 }
 
 .signup-title {

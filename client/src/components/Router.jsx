@@ -7,11 +7,11 @@ import SignUp from './authentication/SignUp'
 import LogIn from './authentication/LogIn'
 import ActivePost from './main/ActivePost';
 
-// start client using 'npm run dev' command
-// start server using 'nodemon' command
 const Router = () => {
     const [posts, setPosts] = useState([]);
     const [apiResponse, setApiResponse] = useState(false)
+
+    const [user, setUser] = useState(null);
 
     // connects to server and gets posts via /posts route
     useEffect(() => {
@@ -23,6 +23,69 @@ const Router = () => {
         })
         .catch(err => console.log(err))
     }, [])
+
+    // user sign up info captured from form
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [userName, setUserName] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [errors, setErrors] = useState([]);
+    const [success, setSuccess] = useState(false);
+
+    // sign up handlers
+    const handleFirstName = (e) => {
+        setFirstName(e.target.value)
+    }
+
+    const handleLastName = (e) => {
+        setLastName(e.target.value)
+    }
+
+    const handleUserName = (e) => {
+        setUserName(e.target.value)
+    }
+
+    const handlePassword = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const handleConfirmPassword = (e) => {
+        setConfirmPassword(e.target.value)
+    }
+
+    const handleCreateAccount = async(e) => {
+        e.preventDefault()
+    
+        try {
+          const response = await fetch(`https://blogr-production.up.railway.app/api/sign_up`, {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+              firstname: firstName,
+              lastname: lastName,
+              username: userName,
+              password: password,
+              confirmpassword: confirmPassword
+            })
+          })
+
+          if (response.ok) {
+            console.log("Created account successfully")
+          } else if (response.status == 400) {
+            setErrors(errorData.details)
+            console.log(errors)
+          } else {
+            console.error('Could not create account')
+          }
+        } catch (err) {
+          console.error(err)
+        }
+
+        
+    }
     
     const router = createBrowserRouter([
         {
@@ -37,7 +100,13 @@ const Router = () => {
         },
         {
             path: '/signup',
-            element: <SignUp />,
+            element: <SignUp
+                        handleFirstName={handleFirstName}
+                        handleLastName={handleLastName}
+                        handleUserName={handleUserName}
+                        handlePassword={handlePassword}
+                        handleConfirmPassword={handleConfirmPassword}
+                        handleCreateAccount={handleCreateAccount} />,
             errorElement: <Error />
         },
         {
