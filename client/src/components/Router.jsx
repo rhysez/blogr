@@ -110,19 +110,14 @@ const Router = () => {
                 password: loginPassword,
               })
             })
-  
-            if (response.ok) {
-              console.log("Account is verified")
-            } else if (response.status == 400) {
-              setErrors(errorData.details)
-              console.log(errors)
-            } else {
-              console.error('Could not find account')
-            }
-          } catch (err) {
-            console.error(err)
-          }
-    }
+            .then(response => response.json())
+            .then(data => setUser(data))
+            .then(console.log(user))
+        
+        } catch(err) {
+            console.log(err)
+        }
+}
 
     const router = createBrowserRouter([
         {
