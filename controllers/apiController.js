@@ -63,15 +63,16 @@ exports.log_in_post = asyncHandler(async (req, res, next) => {
   const user = await User.findOne({ user_name: req.body.username });
 
   if (user) {
-    let comparison = bcrypt.compareSync(req.body.password, user.password);
-    if (comparison) {
-      return res.json(user);
-    } else {
-      return res.json({ message: 'Incorrect password' })
-    }
-  } else {
-    return res.json({ message: 'No account found' });
-  }
+    bcrypt.compare(req.body.password, user.password, function(err, matches){
+        if (err) {
+            return res.json({ message: 'Incorrect password' })
+        } else if (matches) {
+            return res.json(user);
+        } else {
+            return res.json({ message: 'User not found' })
+        }
+    });
+   }
 });
 
 // POST CONTROLLERS
