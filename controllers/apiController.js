@@ -65,14 +65,14 @@ exports.log_in_post = asyncHandler(async (req, res, next) => {
   if (user) {
     bcrypt.compare(req.body.password, user.password, function(err, matches){
         if (err) {
-            return res.json({ message: 'Incorrect password' })
+            return res.json({ message: 'Incorrect password', error: err })
         } else if (matches) {
             return res.json(user);
-        } else {
-            return res.json({ message: 'User not found' })
-        }
+        } 
     });
-   }
+   } else { 
+    return res.json({ message: 'User not found' })
+    }
 });
 
 // POST CONTROLLERS
