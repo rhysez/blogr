@@ -73,6 +73,7 @@ exports.log_in_post = asyncHandler(async (req, res, next) => {
     const user = await User.findOne({ "user_name": req.body.username })
 
     if (user) {
+
         const result = req.body.password === user.password
 
         if (result) {
@@ -83,7 +84,7 @@ exports.log_in_post = asyncHandler(async (req, res, next) => {
 
         }
     } else {
-        return res.json({message: 'username or password does not match'})
+        return res.json({message: 'no user found.'})
     }
 })
 
