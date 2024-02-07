@@ -74,9 +74,7 @@ exports.log_in_post = asyncHandler(async (req, res, next) => {
 
     if (user) {
 
-        const result = req.body.password === user.password
-
-        if (result) {
+        if (req.body.password == user.password) {
             return res.json(user)
 
         } else {
