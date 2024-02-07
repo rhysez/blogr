@@ -57,7 +57,7 @@ exports.sign_up_post = [
                         password: hashedPassword
                     });
                     const result = await user.save();
-                    console.log("User saved successfully");
+                    res.json(user);
                 }
             })
         } catch(err) {
@@ -70,7 +70,7 @@ exports.sign_up_post = [
 
 // verifies account details
 exports.log_in_post = asyncHandler(async (req, res, next) => {
-    const user = await User.findOne({ user_name: req.body.username })
+    const user = await User.findOne({ "user_name": req.body.username })
 
     if (user) {
         const result = req.body.password === user.password
