@@ -75,6 +75,17 @@ exports.log_in_post = asyncHandler(async (req, res, next) => {
     }
 });
 
+// GET USER
+exports.user_get = asyncHandler(async (req, res, next) => {
+  const user = await User.findOne({ _id: req.body.user_id });
+
+  if (user) {
+    return res.json(user)
+  } else {
+    return null; 
+  }
+})
+
 // POST CONTROLLERS
 
 // gets list of all posts

@@ -11,6 +11,9 @@ router.post('/sign_up', api_controller.sign_up_post);
 // log_in get/post
 router.post('/log_in', api_controller.log_in_post);
 
+// user get
+router.post('/user', api_controller.user_get);
+
 // post get
 router.get('/posts', api_controller.posts_get);
 router.get('/posts/:id', api_controller.post_get);
