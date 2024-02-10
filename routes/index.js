@@ -12,7 +12,7 @@ router.post('/sign_up', api_controller.sign_up_post);
 router.post('/log_in', api_controller.log_in_post);
 
 // user get
-router.post('/user', api_controller.user_get);
+router.post('/user', api_controller.user_post);
 
 // post get
 router.get('/posts', api_controller.posts_get);

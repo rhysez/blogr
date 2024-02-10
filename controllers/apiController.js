@@ -76,7 +76,7 @@ exports.log_in_post = asyncHandler(async (req, res, next) => {
 });
 
 // GET USER
-exports.user_get = asyncHandler(async (req, res, next) => {
+exports.user_post = asyncHandler(async (req, res, next) => {
   const user = await User.findOne({ _id: req.body.user_id });
 
   if (user) {
